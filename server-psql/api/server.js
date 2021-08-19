@@ -5,11 +5,13 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-const phoneRoutes = ('./controllers/phoneBook');
+const phoneRoutes = require('./controllers/phoneBook');
 
-server.use('/', phoneRoutes);
+server.use('/phone', phoneRoutes);
 
-server.get('/', (req, res) => res.send('Hello, world!'));
+const port = process.env.PORT || 3000;
+
+server.get('/', (req, res) => {res.send('Hello, world!')});
 
 module.exports = server;
 

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Phone = require('../models/phone');
 
-router.get('/phone', async(req, res)=>{
+router.get('/', async(req, res)=>{
     try {
         const phone = await Phone.all;
         res.json({phone});
@@ -12,7 +12,7 @@ router.get('/phone', async(req, res)=>{
     }
 })
 
-router.post('/phone', async(req, res)=>{
+router.post('/', async(req, res)=>{
     try {
         const phone = new Phone.create(req.body.name, req.body.age, req.body.phoneNumber);
         res.json(phone);
@@ -20,3 +20,5 @@ router.post('/phone', async(req, res)=>{
         res.status(400).json({error})
     }
 })
+
+module.exports = router;
